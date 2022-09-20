@@ -1,0 +1,25 @@
+2001-02-03  Rainer Keuchel  <r_keuchel@netwave.de>
+
+	* currentdir.c (XCESetCurrentDirectoryW): Added check if
+	directory! I must have been sleeping...
+
+	Added root directory to support chroot(), although that is not yet
+	propagated to child processes...
+
+	* all: New multi-thread version. Current directory is now per
+	thread.
+
+2001-02-02  Rainer Keuchel  <r_keuchel@netwave.de>
+
+	* fixpath.c (XCEFixPathW): Dont allow slash at end of dirname...
+
+2001-01-28  Rainer Keuchel  <administrator@keuchel.net>
+
+	* wsdb.c (xcegetservbyname): New func.
+
+2001-01-04  Rainer Keuchel  <r_keuchel@smaug.netwave.de>
+
+	* ftime.c (ftime): WinCE does not return millis in
+	SYSTEMTIME. We have to derive from GetTickCount()...
+	
+
