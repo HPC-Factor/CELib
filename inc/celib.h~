@@ -716,8 +716,6 @@ void XCEShowNormalCursor();
 
 #define _ftime ftime
 
-#define chroot xcechroot
-
 #endif
 
 #ifdef XCEDEBUG

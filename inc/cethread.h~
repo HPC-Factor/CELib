@@ -1,0 +1,34 @@
+#ifndef CETHREAD_H
+#define CETHREAD_H 1
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+struct _tiddata {
+  unsigned long _tid; 
+  unsigned long _thandle;
+  // per thread errno
+  int _terrno;
+  // currentdir is per thread, so you can write a multithreaded ftpd.
+  // this differs from normal Win32, where currentdir is per process.
+  unsigned short _tcurrent_dirw[256];
+  // other stuff to be inserted (strerror, asctime, ...)
+  void * _initaddr; 
+  void * _initarg;
+};
+
+typedef struct _tiddata * _ptiddata;
+
+// get per thread data
+_ptiddata _getptd(void); 
+
+unsigned long _beginthread(void (* initialcode) (void *), unsigned stacksize, 
+			   void * argument);
+void _endthread (void);
+
+#ifdef __cplusplus
+};
+#endif
+
+#endif
