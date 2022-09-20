@@ -1,0 +1,45 @@
+NAME
+	celib - Unix/WinANSI library for WinCE
+
+DESCRIPTION
+	This library is for easier porting Win32 and Unix programs to
+	WinCE. It currently contains parts from NetBSD.
+
+	Environment vars are read from HKEY_LOCAL_MACHINE\Environment.
+
+	Most functions are prefixed with xce... The header celib.h
+	defines most xce-functions to their real name when included in
+	a non-library-build.
+
+	This library is in no way well-designed and well-tested. I
+	wrote it to get Emacs running. Use at your own risk.
+
+COMPILING
+	If you want to recompile the library, you probably have to fix
+	some paths in the makefile.
+
+	You also need to patch some files from Microsoft's CRT library.
+	Look in the file xpatch.bat and fix the path of the CRT
+	sources (these are not installed by default when you setup 
+	VC 6.0!). Then run xpatch.bat. This generates some
+	time-specific files. It's a pain that Microsoft did not
+	implement these - and other crt funcs - in it's coredll.
+	ActiveX seems to be more important...
+
+UNSUPPORTED
+	* pipe(), dup(), dup2()
+
+PROBLEMS
+	* Passing current directory to child processes is done via
+	  PWD in the *global* environment. This could be done in other
+	  ways, but no one is running a lot apps simultanously...
+	
+TODO
+	* Clean up naming etc.
+	* Optionally build as DLL.
+	* Thread-Safety.
+	* Stdio should be replaced, to support sockets etc.
+
+AUTHOR
+	Rainer Keuchel 2001
+
